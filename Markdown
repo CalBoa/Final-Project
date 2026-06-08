@@ -5,8 +5,6 @@
 
 QuantaFlex ETF is a proposed actively managed, rules-based multi-asset exchange-traded fund designed to allocate across equities, fixed income, commodities, and cash using transparent quantitative signals and risk controls. The fund combines diversification with a systematic investment process intended to improve risk-adjusted returns relative to a simple market benchmark. Historical data from publicly traded securities were used to construct and evaluate a baseline portfolio, and Monte Carlo simulation was used to test expected portfolio behavior under uncertainty. Results indicate that the diversified portfolio provides lower volatility and lower drawdown than the S&P 500 benchmark, though with lower raw return in its baseline form. QuantaFlex appears feasible as an investment product, but its business attractiveness depends on whether future active trading rules can generate enough post-fee alpha to justify launch.
 
-**Keywords**: ETF, quantitative finance, Monte Carlo simulation, portfolio management, backtesting, diversification
-
 ### Introduction
 
 This project proposes QuantaFlex ETF, a transparent, actively managed, multi-asset fund that uses a rules-based investment framework rather than discretionary decision making. The motivation for the project is that many investors want diversified active management and risk control, but traditional active funds are often expensive, opaque, and difficult to evaluate. QuantaFlex is designed as an alternative that combines the accessibility and liquidity of an ETF with the discipline of systematic portfolio construction.
