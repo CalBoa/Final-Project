@@ -1,0 +1,127 @@
+# Final Term Project: QuantaFlex ETF  
+## A Rules-Based Multi-Asset ETF Proposal
+
+### Abstract
+
+QuantaFlex ETF is a proposed actively managed, rules-based multi-asset exchange-traded fund designed to allocate across equities, fixed income, commodities, and cash using transparent quantitative signals and risk controls. The fund combines diversification with a systematic investment process intended to improve risk-adjusted returns relative to a simple market benchmark. Historical data from publicly traded securities were used to construct and evaluate a baseline portfolio, and Monte Carlo simulation was used to test expected portfolio behavior under uncertainty. Results indicate that the diversified portfolio provides lower volatility and lower drawdown than the S&P 500 benchmark, though with lower raw return in its baseline form. QuantaFlex appears feasible as an investment product, but its business attractiveness depends on whether future active trading rules can generate enough post-fee alpha to justify launch.
+
+**Keywords**: ETF, quantitative finance, Monte Carlo simulation, portfolio management, backtesting, diversification
+
+### Introduction
+
+This project proposes QuantaFlex ETF, a transparent, actively managed, multi-asset fund that uses a rules-based investment framework rather than discretionary decision making. The motivation for the project is that many investors want diversified active management and risk control, but traditional active funds are often expensive, opaque, and difficult to evaluate. QuantaFlex is designed as an alternative that combines the accessibility and liquidity of an ETF with the discipline of systematic portfolio construction.
+
+The intended users of the fund are retail investors, financial advisors, and institutional allocators seeking a diversified investment vehicle with clear rules and embedded risk management. The broader application developed through this project is a data-driven portfolio framework that can collect public market data, compute return and risk metrics, test portfolio strategies, and evaluate expected outcomes using both historical and simulated data.
+
+The central question of the final project is whether QuantaFlex can serve both investors and fund sponsors as a viable product. From the investor perspective, the fund must offer attractive risk-adjusted performance relative to market alternatives. From the firm perspective, the fund must generate enough fee revenue to justify startup and maintenance costs.
+
+### General Investment Philosophy
+
+QuantaFlex ETF follows a hybrid quantitative investment philosophy. The fund is built on the belief that market prices are not always fully efficient and that disciplined, repeatable trading rules can exploit persistent patterns in returns and risk across asset classes. The philosophy combines diversification, trend sensitivity, momentum awareness, and defensive allocation.
+
+At a high level, the fund is intended to balance capital growth with risk management. Rather than concentrating solely in equities, QuantaFlex spreads exposure across growth-oriented assets and defensive assets. This reflects the view that a multi-asset structure can reduce drawdowns and improve portfolio resilience during changing market conditions.
+
+The long-term design philosophy is to begin with a stable, transparent baseline portfolio and then layer in more active rules only when they can be justified empirically. This makes the fund easier to explain to investors and reduces the risk of overfitting.
+
+### Investment Methods and Rules Employed
+
+The QuantaFlex concept includes several rules-based methods introduced in the earlier checkpoints.
+
+**Baseline structure**
+- Long-only implementation
+- Multi-asset allocation across equity, bonds, commodities, and cash
+- Equal-weight baseline portfolio used as the initial reference model
+
+**Asset universe**
+- NVDA for U.S. growth equity exposure
+- AGG for U.S. investment-grade bonds
+- ACWI for global equities
+- GLD for gold
+- DBC for broad commodities
+- BIL for cash or Treasury-bill reserves
+- SPY as the benchmark for comparison
+
+**Planned active rules**
+- **Trend-following**: increase or maintain exposure when shorter-term moving averages exceed longer-term moving averages and other trend conditions are favorable
+- **Momentum tilt**: overweight assets with stronger trailing returns
+- **Volatility-aware sizing**: reduce exposure when realized volatility rises above threshold levels
+- **Cash allocation**: move partial exposure into BIL when trend and volatility conditions are unfavorable
+
+At the current stage of development, the implemented model is still the equal-weight buy-and-hold baseline. This was consistent with the course recommendation to start with a simple long-only strategy before adding more complex trading logic.
+
+### Description of Securities Included in the Fund
+
+In the first period, QuantaFlex includes six investable securities representing the main asset classes in the fund design:
+
+- **NVDA**: U.S. growth equity proxy
+- **AGG**: U.S. investment-grade bond proxy
+- **ACWI**: global equity proxy
+- **GLD**: gold proxy
+- **DBC**: broad commodity proxy
+- **BIL**: cash or short-term Treasury reserve
+
+This asset mix was selected because it is liquid, publicly observable, and consistent with the intended structure of a multi-asset ETF. It also allows the fund to participate in growth opportunities while maintaining defensive ballast.
+
+In subsequent periods, the intended trading process is rules-based rather than discretionary. The baseline portfolio can be rebalanced on a quarterly basis or when weights drift materially from targets. In the more advanced version of QuantaFlex, trading decisions would be driven by trend, momentum, and volatility rules that shift portfolio weights among the six assets and cash reserve based on current market conditions.
+
+### Performance Evaluation
+
+Daily adjusted close prices were collected from Yahoo Finance through the Python package `yfinance`. Adjusted prices were used so that dividends and splits were reflected in return calculations. Because the selected ETF proxies do not all share a common history back to 1999, the main common analysis window was 2008–2024. Although shorter than the ideal 25-year period, this sample still includes several important stress periods, including the global financial crisis, post-crisis recovery, COVID-19, and the 2022 inflation shock.
+
+Daily log returns were computed and used to evaluate the baseline portfolio. The fund’s performance was compared to SPY using the following measures:
+
+- annualized return
+- annualized volatility
+- Sharpe ratio
+- maximum drawdown
+- alpha
+- beta
+
+The equal-weight QuantaFlex baseline portfolio produced the following approximate historical results over the 2008–2024 sample:
+
+| Metric | QuantaFlex | SPY |
+|---|---:|---:|
+| Annualized Return (%) | 8.03 | 10.85 |
+| Annualized Volatility (%) | 12.92 | 19.95 |
+| Sharpe Ratio | 0.62 | 0.54 |
+| Maximum Drawdown (%) | -39.54 | -51.48 |
+| Alpha (%) | 2.64 | — |
+| Beta | 0.50 | — |
+
+These results show that QuantaFlex underperformed SPY on raw return, but with substantially lower volatility and lower drawdown. The higher Sharpe ratio suggests somewhat better risk-adjusted performance, while the beta near 0.50 indicates lower market sensitivity.
+
+Monte Carlo simulation was also used to evaluate the portfolio under uncertainty. Starting from an initial portfolio value of 1.00, the mean simulated five-year ending value was approximately 1.55 and the median ending value was approximately 1.50. This suggests positive expected growth under a range of simulated market conditions, though with meaningful uncertainty around those outcomes.
+
+### Management Recommendation
+
+From the perspective of an investor, QuantaFlex appears promising as a diversified, lower-risk investment strategy. Its baseline performance suggests that it could appeal to investors who prioritize smoother returns and reduced drawdowns over maximum upside. In that sense, I would be willing to consider being a client or investor in a fund like this, especially if the fee structure remained modest.
+
+From the perspective of launching a financial services firm, however, the answer is more cautious. At its current stage, QuantaFlex is not yet strong enough to justify launching a company around it. The baseline strategy is credible and defensible, but it does not yet clearly outperform passive market alternatives after accounting for likely fees. If startup costs are in the range of $50,000 to $100,000 and ongoing operating costs must also be covered, the fund would need stronger post-fee differentiation to be a practical business opportunity.
+
+That means the business recommendation is conditional. I would not immediately launch the fund as a stand-alone company based only on the current buy-and-hold version. However, I do believe it is worth pursuing further as a research and development opportunity. If the active rules can be implemented successfully and demonstrate stronger alpha or improved downside protection after fees, then QuantaFlex could become a viable niche investment product.
+
+If I were part of the firm, the role I would be most interested in would be **researcher / quantitative strategist**, because the main value of the project lies in refining the trading rules, testing robustness, and improving portfolio design.
+
+### Conclusions
+
+QuantaFlex ETF is a feasible and well-structured multi-asset investment concept built on diversification, systematic rules, and transparent portfolio construction. The project successfully progressed from conceptual design to data preparation, baseline implementation, and performance evaluation. The results support the idea that a diversified rules-based ETF can deliver lower volatility and shallower drawdowns than a broad equity benchmark.
+
+At the same time, the current baseline form is better understood as a foundation than a finished investment product. Its lower raw return relative to SPY means that the next stage of the project must focus on whether active rules such as trend-following, momentum tilts, and volatility management can improve net performance after fees.
+
+Overall, QuantaFlex is a credible term project and a potentially interesting investment concept, but not yet a fully compelling business launch opportunity. The strongest case for the fund at present is as a disciplined, lower-risk, research-driven portfolio framework. Future work should focus on walk-forward backtesting, fee-sensitive evaluation, and more realistic simulations so that the final strategy can be judged as both an investor product and a business proposition.
+
+### References
+
+Goldfarb, Donald, and Garud Iyengar. 2003. “Robust Portfolio Selection Problems.” *Mathematics of Operations Research* 28 (1): 1–38.
+
+Jegadeesh, Narasimhan, and Sheridan Titman. 1993. “Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency.” *Journal of Finance* 48 (1): 65–91.
+
+López de Prado, Marcos. 2018. *Advances in Financial Machine Learning*. Hoboken, NJ: Wiley.
+
+Markowitz, Harry. 1952. “Portfolio Selection.” *Journal of Finance* 7 (1): 77–91.
+
+Moskowitz, Tobias J., Yao Hua Ooi, and Lasse Heje Pedersen. 2012. “Time Series Momentum.” *Journal of Financial Economics* 104 (2): 228–250.
+
+Sharpe, William F. 1964. “Capital Asset Prices: A Theory of Market Equilibrium under Conditions of Risk.” *Journal of Finance* 19 (3): 425–442.
+
+Yahoo Finance. n.d. “Historical Market Data.” Accessed May 19, 2026. <https://finance.yahoo.com/>
